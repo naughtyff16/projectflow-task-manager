@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.input {
+  @apply w-full p-2 border border-gray-300 rounded-lg mb-3 outline-none;
+}
+
+.input:focus {
+  @apply border-blue-600;
+}
+
+.btn-primary {
+  @apply w-full bg-blue-600 text-white py-2 rounded-lg cursor-pointer;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-700;
+}
+
+.error {
+  @apply text-red-500 text-sm mb-2;
+}
