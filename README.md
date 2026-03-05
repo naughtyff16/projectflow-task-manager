@@ -391,6 +391,13 @@ Authorization: Bearer TOKEN
 http://127.0.0.1:8080/api
 ```
 
+## Postman Collection
+
+Import the collection to test APIs.
+
+Location:
+postman/ProjectFlow.postman_collection.json
+
 ---
 
 # 👨‍💻 Author
