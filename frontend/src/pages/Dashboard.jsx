@@ -23,10 +23,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/");
-    }
+    // const token = localStorage.getItem("token");
+    // if (!token) {
+    //   navigate("/");
+    // }
     fetchProjects();
   }, []);
 

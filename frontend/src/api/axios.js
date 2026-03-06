@@ -4,6 +4,10 @@ const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
+/*
+REQUEST INTERCEPTOR
+Attach token automatically
+*/
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -13,5 +17,25 @@ instance.interceptors.request.use((config) => {
 
   return config;
 });
+
+/*
+RESPONSE INTERCEPTOR
+Handle 401 globally
+*/
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      // remove token
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+
+      // redirect to login
+      window.location.href = "/";
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default instance;
