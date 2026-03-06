@@ -40,6 +40,8 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   try {
+    console.log("JWT_SECRET==>>:", process.env.JWT_SECRET);
+    console.log("MONGO_URI==>>:", process.env.MONGO_URI);
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -55,6 +57,8 @@ exports.login = async (req, res, next) => {
     if (!isMatch) {
       return next(new ApiError(401, "Invalid credentials"));
     }
+    console.log("JWT_SECRET:", process.env.JWT_SECRET);
+    console.log("MONGO_URI:", process.env.MONGO_URI);
 
     return res.json({
       success: true,
