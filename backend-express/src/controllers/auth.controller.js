@@ -66,6 +66,7 @@ exports.login = async (req, res, next) => {
       },
     });
   } catch (error) {
+    console.error("LOGIN ERROR:", error);
     return next(new ApiError(500, "Login failed"));
   }
 };
