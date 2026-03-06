@@ -2,22 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error.middleware");
-
-connectDB();
 
 const app = express();
 
-/*
-CORS CONFIG
-*/
 app.use(
   cors({
     origin: ["http://localhost:5173", process.env.FRONTEND_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-  }),
+  })
 );
 
 app.use(express.json());

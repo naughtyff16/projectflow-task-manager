@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const schema = yup.object({
   name: yup.string().required().min(3),
@@ -18,8 +19,18 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+  const [loading, setLoading] = useState(false);
 
-  const onSubmit = (data) => registerUser(data);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      await registerUser(data);
+    } catch (error) {
+      console.error("Registration failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -43,7 +54,9 @@ const Register = () => {
         />
         <p className="error">{errors.password?.message}</p>
 
-        <button className="btn-primary">Register</button>
+        <button disabled={loading} className="btn-primary">
+          {loading ? "Registering..." : "Register"}
+        </button>
 
         <Link to="/" className="text-blue-500 text-sm">
           Already have account?
