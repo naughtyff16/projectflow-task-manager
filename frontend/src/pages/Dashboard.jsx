@@ -47,7 +47,7 @@ const Dashboard = () => {
     <Layout>
       <h1 className="text-3xl font-bold mb-6">Your Projects</h1>
 
-      <div className="flex gap-3 mb-8">
+      <div className="flex flex-col md:flex-row gap-3 mb-8">
         <input
           value={projectName}
           onChange={(e) => setProjectName(e.target.value)}
@@ -56,7 +56,7 @@ const Dashboard = () => {
         />
         <button
           onClick={handleCreate}
-          className="bg-blue-600 text-white px-6 rounded-lg hover:bg-blue-700"
+          className="w-1/2 mx-auto md:w-auto px-6 bg-blue-600 text-white py-2 rounded-lg cursor-pointer hover:bg-blue-700"
         >
           Create
         </button>
