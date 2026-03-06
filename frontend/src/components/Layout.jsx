@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       )}
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static z-50 top-0 left-0 h-full w-64 bg-white shadow-lg p-6 flex flex-col transform transition-transform duration-300
+        className={`fixed lg:relative z-50 top-0 left-0 h-full lg:min-h-screen w-64 bg-white shadow-lg p-6 flex flex-col transform transition-transform duration-300
         ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         <div>
