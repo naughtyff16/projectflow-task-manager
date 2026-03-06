@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const schema = yup.object({
   name: yup.string().required().min(3),
@@ -20,6 +21,7 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data) => {
     try {
@@ -46,12 +48,22 @@ const Register = () => {
         <input {...register("email")} placeholder="Email" className="input" />
         <p className="error">{errors.email?.message}</p>
 
-        <input
-          type="password"
-          {...register("password")}
-          placeholder="Password"
-          className="input"
-        />
+        <div className="relative my-4">
+          <input
+            type={showPassword ? "text" : "password"}
+            {...register("password")}
+            placeholder="Password"
+            className="input"
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </button>
+        </div>
         <p className="error">{errors.password?.message}</p>
 
         <button disabled={loading} className="btn-primary">

@@ -17,7 +17,7 @@ const TaskForm = ({ form, handleChange, handleAdd }) => {
         className="w-full border p-3 rounded"
       />
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <select
           name="priority"
           value={form.priority}
